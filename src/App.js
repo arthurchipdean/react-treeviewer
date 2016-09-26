@@ -11,8 +11,20 @@ class App extends Component {
   onExpand({event, node}) {
       console.log([event, node]);
   }
-  onDragStart({event, node}) {
-    console.log(arguments);
+  onDragStart(e , node) {
+    console.log(node);
+  }
+  onSelect(node) {
+      console.log(['select', arguments]);
+  }
+  onDrag() {
+      console.log('on drag');
+  }
+  onDragEnd() {
+      console.log('on drag end');
+  }
+  onCheck() {
+      console.log('on check');
   }
   render() {
     return (
@@ -25,10 +37,16 @@ class App extends Component {
             <Col sm={8} smOffset={2}>
                 <Panel bsStyle="primary">
                     <TreeView
-                        draggable
-                        onExpand={this.onExpand.bind(this)}
+                        onSelect={this.onSelect.bind(this)}
+                        onDrag={this.onDrag.bind(this)}
                         onDragStart={this.onDragStart.bind(this)}
+                        onDragEnd={this.onDragEnd.bind(this)}
+                        onExpand={this.onExpand.bind(this)}
+                        onCheck={this.onCheck.bind(this)}
                         data={data}
+                        //checkable
+                        draggable
+                        selectable
                     />
                 </Panel>
             </Col>

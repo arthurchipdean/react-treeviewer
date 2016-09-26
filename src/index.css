@@ -3,3 +3,9 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+.ad-selected-node {
+  background: linear-gradient(to bottom,#beebff 0,#a8e4ff 100%);
+}
+.tree-branch {
+  /*background: url('line.png') repeat-y;*/
+}

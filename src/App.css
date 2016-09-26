@@ -20,7 +20,7 @@
   to { transform: rotate(360deg); }
 }
 
-ul.tree-branch {
+ul.tree-branch, ul.tree-root {
   padding-left:0;
   list-style: none;
 }
