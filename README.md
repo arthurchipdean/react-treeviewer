@@ -141,5 +141,5 @@ Is the node checked?
 
 ## Something Missing?
 
-If you have ideas for more “How To” recipes that should be on this page, or any additional features you would like [let us know](https://github.com/arthurchipdean/react-treeview/issues) or [contribute some!](https://github.com/arthurchipdean/react-treeview/pulls)
+If you have ideas for more “How To” recipes that should be on this page, or any additional features you would like [let me know](https://github.com/arthurchipdean/react-treeview/issues) or [contribute some!](https://github.com/arthurchipdean/react-treeview/pulls)
 "# react-treeview-ad" 
