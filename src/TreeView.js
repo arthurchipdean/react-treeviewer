@@ -13,7 +13,7 @@ import {
 
 class TreeView extends Component {
     constructor(props) {
-        super(props);
+       super(props);
        let data = mapTree(props.data, (d) => {
             if(d.expanded !== true) {
                 let children = d.children;

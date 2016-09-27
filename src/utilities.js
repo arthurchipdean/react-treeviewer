@@ -46,13 +46,11 @@ export const findNodeById = (nodes, id)  => {
 export const collapseBranch = (node) => {
     node.expanded = false;
     node._children = node.children;
-    node.children = undefined;
+    node.children = [];
 };
 export const collapseBranchChildren = (node) => {
     if(node.children) {
-        node.expanded = false;
-        node._children = node.children;
-        node.children = undefined;
+        collapseBranch(node);
         node._children.forEach(c => collapseBranchChildren(c));
     }
 };
@@ -63,9 +61,7 @@ export const expandBranch = (node) => {
 };
 export const expandBranchChildren = (node) => {
     if(node._children) {
-        node.expanded = true;
-        node.children = node._children;
-        node._children = undefined;
+        expandBranch(node);
         node.children.forEach(c => expandBranchChildren(c));
     }
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TreeView from './TreeView';
+import TreeView from './../src/TreeView';
 import { mount } from 'enzyme';
 import sinon from 'sinon';
 import _ from 'lodash';

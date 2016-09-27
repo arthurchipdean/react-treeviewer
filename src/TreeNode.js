@@ -71,7 +71,7 @@ class TreeNode extends Component {
         let icon = this.props.data.icon;
         if(icon) {
             return (
-                <span><FontAwesome name={this.props.data.icon} /> </span>
+                <span><FontAwesome name={icon} /> </span>
             );
         }
         return '';
@@ -118,7 +118,12 @@ class TreeNode extends Component {
           <li style={{marginLeft: hasChildren ? `${level*15}px` : `${level*15+15}px`}}>
               {hasChildren ?
                   (<div>
-                      {this.getNodeExpander(<FontAwesome data-id={data.id} name={expanded ? this.getExpandedIcon() : this.getCollapsedIcon()} />)}
+                      {this.getNodeExpander(
+                          <FontAwesome
+                              data-id={data.id}
+                              name={expanded ? this.getExpandedIcon() : this.getCollapsedIcon()}
+                          />
+                      )}
                       {this.getCheckbox(data)}
                       {this.getIcon()}
                       {this.props.selectable ?
@@ -133,7 +138,7 @@ class TreeNode extends Component {
                   </div>)
               }
               {data.children !== undefined ?
-                  <ul className="tree-branch" style={{display:expanded ? 'block' : 'none'}} key={_.uniqueId()}>
+                  <ul className="tree-branch" key={_.uniqueId()}>
                       {data.children.map(child => (
                           <TreeNode
                               key={_.uniqueId()}

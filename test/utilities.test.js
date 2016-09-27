@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import * as u from './utilities';
+import * as u from './../src/utilities';
 let testData = [{id:1,children:[{id:3,children:[{id:5}]}]}];
 let testCollapsedData = [{id:1,_children:[{id:3,_children:[{id:5}]}]}];
 let testProps = {
@@ -57,7 +57,7 @@ it('should collapse the branch', () => {
     let fixture = _.cloneDeep(testData);
     u.collapseBranch(fixture[0]);
     expect(fixture[0].expanded).toBe(false);
-    expect(fixture[0].children).toEqual(undefined);
+    expect(fixture[0].children).toEqual([]);
 });
 it('should collapse a branch and the children', () => {
     let fixture = _.cloneDeep(testData);

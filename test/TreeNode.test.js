@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TreeNode from './TreeNode';
+import TreeNode from './../src/TreeNode';
 import { shallow, mount } from 'enzyme';
 import sinon from 'sinon';
 
