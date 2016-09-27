@@ -27,13 +27,13 @@ class TreeView extends Component {
     }
     handleCheck(e) {
         let newState = _.clone(this.state.data);
-        let node = findNodeById(newState,parseInt(e.currentTarget.dataset.id, 10));
+        let node = findNodeById(newState,parseInt(e.target.dataset.id, 10));
         node.checked = !node.checked;
         this.setState({ data: newState });
     }
     handleDoubleClick(e) {
         let newState = _.clone(this.state.data);
-        let node = findNodeById(newState,parseInt(e.currentTarget.dataset.id, 10));
+        let node = findNodeById(newState,parseInt(e.target.dataset.id, 10));
         if(node.expanded) {
             collapseBranchChildren(node);
         } else {
@@ -46,7 +46,7 @@ class TreeView extends Component {
     }
     handleToggleClick(e) {
         let newState = _.clone(this.state.data);
-        let node = findNodeById(newState,parseInt(e.currentTarget.dataset.id, 10));
+        let node = findNodeById(newState,parseInt(e.target.dataset.id, 10));
         if(node.expanded) {
             collapseBranch(node);
         } else {
@@ -59,7 +59,7 @@ class TreeView extends Component {
     }
     handleSelect(e) {
         let newState = _.clone(this.state.data);
-        let node = findNodeById(newState,parseInt(e.currentTarget.dataset.id, 10));
+        let node = findNodeById(newState,parseInt(e.target.dataset.id, 10));
         node.selected = !node.selected;
         this.setState({data: newState});
     }

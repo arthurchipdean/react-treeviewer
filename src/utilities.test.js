@@ -9,7 +9,16 @@ let testProps = {
     level: '',
     onDrag: ''
 };
-
+let testPropsTwo = {
+    data: '',
+    level: '',
+    expanded: '',
+    handleToggleClick: '',
+    handleDoubleClick: '',
+    handleCheck: '',
+    onExpand: '',
+    draggable: ''
+};
 it('visits each tree node and calls callback', () => {
     let visit = 0;
     u.mapTree(testData, () => {visit++;});
@@ -20,6 +29,8 @@ it('leaves domProps', () => {
     expect(domProps).toEqual({
         fakeProp: 'blah'
     });
+    domProps = u.domProps(testPropsTwo);
+    expect(domProps).toEqual({});
 });
 it('leaves pass down props', () => {
    let  passDownProps = u.passDownProps(testProps);

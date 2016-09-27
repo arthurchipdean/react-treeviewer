@@ -47,7 +47,7 @@ class App extends Component {
                         checkable
                         collapsedIcon="pencil"
                         draggable
-                        //selectable
+                        selectable
                     />
                 </Panel>
             </Col>

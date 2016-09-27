@@ -24,12 +24,12 @@ ul.tree-branch, ul.tree-root {
   padding-left:0;
   list-style: none;
 }
-.branch-toggle span, .leaf span {
+.branch-toggle, .leaf {
   margin-right:5px;
   text-decoration:none;
   color: black;
 }
-.branch-toggle:hover span, .leaf:hover span {
+.branch-toggle:hover, .leaf:hover {
   margin-right:5px;
   text-decoration:none;
   color: black;

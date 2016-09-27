@@ -45,7 +45,7 @@ class TreeNode extends Component {
                 onDragEnd={this.onDragEnd.bind(this)}
                 selected={data.selected}
             >
-                <span>{child}</span>
+                {child}
             </TreeNodeAnchor>
         );
     }
@@ -118,18 +118,18 @@ class TreeNode extends Component {
           <li style={{marginLeft: hasChildren ? `${level*15}px` : `${level*15+15}px`}}>
               {hasChildren ?
                   (<div>
-                      {this.getNodeExpander(<FontAwesome name={expanded ? this.getExpandedIcon() : this.getCollapsedIcon()} />)}
+                      {this.getNodeExpander(<FontAwesome data-id={data.id} name={expanded ? this.getExpandedIcon() : this.getCollapsedIcon()} />)}
                       {this.getCheckbox(data)}
                       {this.getIcon()}
                       {this.props.selectable ?
-                          this.getNodeSelector(<span>{text}</span>) :
-                          this.getNodeExpander(<span>{text}</span>)
+                          this.getNodeSelector(text) :
+                          this.getNodeExpander(text)
                       }
                   </div>) :
                   (<div>
                       {this.getCheckbox(data)}
                       {this.getIcon()}
-                      {this.getNodeSelector(<span>{text}</span>)}
+                      {this.getNodeSelector(text)}
                   </div>)
               }
               {data.children !== undefined ?
