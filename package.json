@@ -1,7 +1,6 @@
 {
-  "name": "treeview",
+  "name": "react-treeviewer",
   "version": "0.1.0",
-  "private": true,
   "devDependencies": {
     "enzyme": "^2.4.1",
     "react-addons-test-utils": "^15.3.2",
@@ -10,13 +9,9 @@
   },
   "dependencies": {
     "lodash": "^4.16.1",
-    "rc-animate": "^2.3.1",
     "react": "^15.3.2",
-    "react-addons-css-transition-group": "^15.3.2",
-    "react-bootstrap": "^0.30.3",
     "react-dom": "^15.3.2",
-    "react-fontawesome": "^1.2.0",
-    "react-motion": "^0.4.4"
+    "react-fontawesome": "^1.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
