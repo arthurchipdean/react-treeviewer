@@ -6,6 +6,7 @@ import {
     mapTree,
     findNodeById,
     collapseBranch,
+    collapseBranchChildren,
     expandBranch,
     expandBranchChildren
 } from './utilities';
@@ -34,11 +35,14 @@ class TreeView extends Component {
         let newState = _.clone(this.state.data);
         let node = findNodeById(newState,parseInt(e.currentTarget.dataset.id, 10));
         if(node.expanded) {
-            collapseBranch(node);
+            collapseBranchChildren(node);
         } else {
             expandBranchChildren(node);
         }
         this.setState({ data: newState });
+        if(this.props.onExpandAll) {
+            this.props.onExpandAll({ event: e, node: node });
+        }
     }
     handleToggleClick(e) {
         let newState = _.clone(this.state.data);
@@ -48,7 +52,7 @@ class TreeView extends Component {
         } else {
             expandBranch(node);
         }
-        this.setState({data: newState})
+        this.setState({data: newState});
         if(this.props.onExpand) {
             this.props.onExpand({ event: e, node: node });
         }
@@ -98,6 +102,7 @@ TreeView.propTypes = {
     onDragStart: PropTypes.func,
     onDrag: PropTypes.func,
     onDragEnd: PropTypes.func,
+    onExpandAll: PropTypes.func
 };
 export default TreeView;
 

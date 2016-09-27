@@ -44,10 +44,10 @@ class App extends Component {
                         onExpand={this.onExpand.bind(this)}
                         onCheck={this.onCheck.bind(this)}
                         data={data}
-                        //checkable
+                        checkable
                         collapsedIcon="pencil"
                         draggable
-                        selectable
+                        //selectable
                     />
                 </Panel>
             </Col>

@@ -44,15 +44,17 @@ export const findNodeById = (nodes, id)  => {
     return result;
 };
 export const collapseBranch = (node) => {
-    const collapse = node => {
+    node.expanded = false;
+    node._children = node.children;
+    node.children = undefined;
+};
+export const collapseBranchChildren = (node) => {
+    if(node.children) {
         node.expanded = false;
         node._children = node.children;
         node.children = undefined;
-        if(node._children) {
-            collapse(node._children);
-        }
-    };
-    collapse(node);
+        node._children.forEach(c => collapseBranchChildren(c));
+    }
 };
 export const expandBranch = (node) => {
     node.expanded = true;
@@ -60,10 +62,10 @@ export const expandBranch = (node) => {
     node._children = undefined;
 };
 export const expandBranchChildren = (node) => {
-    node.expanded = true;
-    node.children = node._children;
-    node._children = undefined;
-    if(node.children) {
-        expandBranchChildren(node.children);
+    if(node._children) {
+        node.expanded = true;
+        node.children = node._children;
+        node._children = undefined;
+        node.children.forEach(c => expandBranchChildren(c));
     }
 };

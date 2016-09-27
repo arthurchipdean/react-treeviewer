@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import * as u from './utilities';
 let testData = [{id:1,children:[{id:3,children:[{id:5}]}]}];
+let testCollapsedData = [{id:1,_children:[{id:3,_children:[{id:5}]}]}];
 let testProps = {
     selectable: true,
     fakeProp: 'blah',
@@ -34,8 +35,27 @@ it('should find the right node', () => {
         id: 5
     });
 });
+it('should expand the branch', () => {
+    let fixture = _.cloneDeep(testCollapsedData);
+    u.expandBranch(fixture[0]);
+    expect(fixture[0].expanded).toBe(true);
+    expect(fixture[0].children).toEqual([{"id":3,"_children":[{"id":5}]}]);
+    expect(fixture[0]._children).toEqual(undefined);
+});
 it('should collapse the branch', () => {
-    let data = _.clone(testData);
-    u.expandBranch(data);
-    expect(data[0]).toBe(true);
+    let fixture = _.cloneDeep(testData);
+    u.collapseBranch(fixture[0]);
+    expect(fixture[0].expanded).toBe(false);
+    expect(fixture[0].children).toEqual(undefined);
+});
+it('should collapse a branch and the children', () => {
+    let fixture = _.cloneDeep(testData);
+    u.collapseBranchChildren(fixture[0]);
+    expect(fixture[0]._children[0]._children[0].id).toBeDefined();
+    expect(fixture[0].expanded).toBe(false);
+});
+it('should expand a branch and the children', () => {
+    let fixture = _.cloneDeep(testCollapsedData);
+   u.expandBranchChildren(fixture[0]);
+    expect(fixture[0].children[0].children[0].id).toBeDefined();
 });
