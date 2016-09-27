@@ -1,5 +1,6 @@
+import _ from 'lodash';
 import * as u from './utilities';
-let testData = [{children:[{children:[{}]}]}];
+let testData = [{id:1,children:[{id:3,children:[{id:5}]}]}];
 let testProps = {
     selectable: true,
     fakeProp: 'blah',
@@ -26,4 +27,15 @@ it('leaves pass down props', () => {
         onDrag: '',
         selectable: true
     });
+});
+it('should find the right node', () => {
+    let  node = u.findNodeById(testData, 5);
+    expect(node).toEqual({
+        id: 5
+    });
+});
+it('should collapse the branch', () => {
+    let data = _.clone(testData);
+    u.expandBranch(data);
+    expect(data[0]).toBe(true);
 });

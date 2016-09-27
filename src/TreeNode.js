@@ -17,7 +17,7 @@ class TreeNode extends Component {
                data-id={data.id}
                onClick={this.onSelect.bind(this)}
                onDoubleClick={handleDoubleClick}
-               className="branch-toggle"
+               className="branch-toggle selector"
                onDragStart={this.onDragStart.bind(this)}
                onDrag={this.onDrag.bind(this)}
                onDragEnd={this.onDragEnd.bind(this)}
@@ -39,7 +39,7 @@ class TreeNode extends Component {
                 expanded={data.expanded}
                 onClick={handleToggleClick}
                 onDoubleClick={handleDoubleClick}
-                className="branch-toggle"
+                className="branch-toggle expander"
                 onDragStart={this.onDragStart.bind(this)}
                 onDrag={this.onDrag.bind(this)}
                 onDragEnd={this.onDragEnd.bind(this)}
@@ -149,6 +149,14 @@ class TreeNode extends Component {
         );
     }
 }
+TreeNode.defaultProps = {
+    data: {
+        text: '',
+        expanded: false,
+        selected: false,
+        checked: false
+    }
+};
 TreeNode.propTypes = {
     data: PropTypes.shape({
         selected: PropTypes.bool,

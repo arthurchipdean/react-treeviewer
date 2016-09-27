@@ -3,7 +3,11 @@ import TreeNode from './TreeNode';
 import _ from 'lodash';
 import {
     passDownProps,
-    mapTree
+    mapTree,
+    findNodeById,
+    collapseBranch,
+    expandBranch,
+    expandBranchChildren
 } from './utilities';
 
 class TreeView extends Component {
@@ -20,76 +24,40 @@ class TreeView extends Component {
             data
         };
     }
-    findNodeById(nodes, id) {
-        let result;
-        nodes.forEach(node => {
-            if(node.id === id) {
-                result = node;
-            } else if(node.children || node._children !== undefined) {
-                result = this.findNodeById(node.children || node._children, id) || result;
-            }
-        });
-        return result;
-    }
-    collapseBranch(newState, node) {
-        const collapse = node => {
-            node.expanded = false;
-            node._children = node.children;
-            node.children = undefined;
-            if(node._children) {
-                collapse(node._children);
-            }
-        };
-        collapse(node);
-        this.setState(newState);
-    }
-    expandBranch(newState, node) {
-        node.expanded = true;
-        node.children = node._children;
-        node._children = undefined;
-        this.setState(newState);
-    }
-    expandBranchChildren(node) {
-        node.expanded = true;
-        node.children = node._children;
-        node._children = undefined;
-        if(node.children) {
-            this.expandBranchChildren(node.children);
-        }
-    }
     handleCheck(e) {
         let newState = _.clone(this.state.data);
-        let node = this.findNodeById(newState,parseInt(e.currentTarget.dataset.id, 10));
+        let node = findNodeById(newState,parseInt(e.currentTarget.dataset.id, 10));
         node.checked = !node.checked;
         this.setState({ data: newState });
     }
     handleDoubleClick(e) {
         let newState = _.clone(this.state.data);
-        let node = this.findNodeById(newState,parseInt(e.currentTarget.dataset.id, 10));
+        let node = findNodeById(newState,parseInt(e.currentTarget.dataset.id, 10));
         if(node.expanded) {
-            this.collapseBranch(newState, node);
+            collapseBranch(node);
         } else {
-            this.expandBranchChildren(node);
+            expandBranchChildren(node);
         }
         this.setState({ data: newState });
     }
     handleToggleClick(e) {
         let newState = _.clone(this.state.data);
-        let node = this.findNodeById(newState,parseInt(e.currentTarget.dataset.id, 10));
+        let node = findNodeById(newState,parseInt(e.currentTarget.dataset.id, 10));
         if(node.expanded) {
-            this.collapseBranch(newState, node);
+            collapseBranch(node);
         } else {
-            this.expandBranch(newState, node);
+            expandBranch(node);
         }
+        this.setState({data: newState})
         if(this.props.onExpand) {
             this.props.onExpand({ event: e, node: node });
         }
     }
     handleSelect(e) {
         let newState = _.clone(this.state.data);
-        let node = this.findNodeById(newState,parseInt(e.currentTarget.dataset.id, 10));
+        let node = findNodeById(newState,parseInt(e.currentTarget.dataset.id, 10));
         node.selected = !node.selected;
-        this.setState({date: newState});
+        this.setState({data: newState});
     }
     render() {
         const { data } = this.state;

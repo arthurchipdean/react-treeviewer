@@ -45,6 +45,7 @@ class App extends Component {
                         onCheck={this.onCheck.bind(this)}
                         data={data}
                         //checkable
+                        collapsedIcon="pencil"
                         draggable
                         selectable
                     />
