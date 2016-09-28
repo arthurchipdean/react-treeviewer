@@ -1,6 +1,7 @@
 ##React Treeview
 #### Customizable Treeviewer built in react for visualizing hierarchical data.
 [![Build Status](https://travis-ci.org/arthurchipdean/react-treeviewer.svg?branch=master)](https://travis-ci.org/arthurchipdean/react-treeviewer)
+[![Coverage Status](https://coveralls.io/repos/github/arthurchipdean/react-treeviewer/badge.svg?branch=master)](https://coveralls.io/github/arthurchipdean/react-treeviewer?branch=master)
 ## Installing
 
 ```
@@ -103,7 +104,7 @@ Fontawesome icon string to represent the expanded node anchor
     text:"Root",
     icon:"folder",
     expanded:false,
-    ,children:[{
+    children:[{
         id:3,
         selected: true,
         checked: false,
