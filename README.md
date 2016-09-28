@@ -108,7 +108,7 @@ Fontawesome icon string to represent the expanded node anchor
         id:3,
         selected: true,
         checked: false,
-        text:"Child 1"
+        text:"Child 1",
         children:[{id:5, text:"Grandchild 1"}]
         }
     ]
