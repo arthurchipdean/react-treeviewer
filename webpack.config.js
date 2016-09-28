@@ -6,7 +6,8 @@ module.exports = {
   output: {
     path: __dirname,
     filename: 'index.js',
-    libraryTarget: "commonjs"
+    libraryTarget: 'umd',
+    library: 'TreeView'
   },
   module: {
     loaders: [
