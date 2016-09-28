@@ -68,11 +68,19 @@ class TreeNode extends Component {
         return  icon ? icon :  'minus-square-o';
     }
     getIcon() {
-        let icon = this.props.data.icon;
-        if(icon) {
+        let {
+          icon,
+          iconObj
+          } = this.props.data;
+
+        if(iconObj) {
             return (
-                <span><FontAwesome name={icon} /> </span>
+                <span><FontAwesome {...iconObj} /> </span>
             );
+        } else if(icon) {
+            return (
+              <span><FontAwesome name={icon} /></span>
+            )
         }
         return '';
     }
@@ -168,7 +176,15 @@ TreeNode.propTypes = {
         expanded: PropTypes.bool,
         checked: PropTypes.bool,
         id: PropTypes.number,
-        text: PropTypes.string
+        text: PropTypes.string,
+        icon: PropTypes.string,
+        iconObj: PropTypes.shape({
+            className: PropTypes.string,
+            name: PropTypes.string,
+            size: PropTypes.string,
+            spin: PropTypes.bool,
+            style: PropTypes.object
+        })
     }),
     level: PropTypes.number,
     selectable: PropTypes.bool,

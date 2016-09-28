@@ -107,6 +107,26 @@ it('allows user to set custom icons', () => {
     expect(icon.length === 1).toBe(true);
 });
 
+it('allows user to set custom icon objects', () => {
+    const div = document.createElement('div');
+    let props = {
+        data: {
+            iconObj:{
+              name: 'pencil'
+            },
+            expanded: true,
+            children: [{},{}]
+        }
+    };
+    const wrapper = mount(
+      <TreeNode
+        {...props}
+      />
+    );
+    let icon = wrapper.find('.fa-pencil');
+    expect(icon.length === 1).toBe(true);
+});
+
 it('allows user to set expandedIcons', () => {
     const div = document.createElement('div');
     let props = {

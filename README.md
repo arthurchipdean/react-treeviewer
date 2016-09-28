@@ -8,6 +8,8 @@
 ```
 npm install --save react-treeviewer
 ```
+The fontawesome css file is not included so include it in your webpage:
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
 
 ##Another tree viewer?
 There are already multiple solutions out the for viewing hierarchical data but I found all existing libraries to be lacking in some manner. I wanted to be able to customize more than I could with the existing solutions.
@@ -110,6 +112,12 @@ Fontawesome icon string to represent the expanded node anchor
         selected: true,
         checked: false,
         text:"Child 1",
+        iconObj: {
+            name: 'rocket',
+            size: '2x',
+            spin: true,
+            style: { color: 'red' }
+        },
         children:[{id:5, text:"Grandchild 1"}]
         }
     ]
@@ -123,6 +131,10 @@ Add properties to each data node for more fine grained control.
 Fontawesome icon name.
 
 --
+
+#### iconObj
+###### object
+All properties in this object will be passed down to the icon. (This overrides the icon string property if present.)
 
 #### expanded
 ###### boolean

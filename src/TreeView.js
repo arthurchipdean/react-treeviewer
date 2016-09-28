@@ -93,7 +93,15 @@ TreeView.propTypes = {
         expanded: PropTypes.bool,
         checked: PropTypes.bool,
         id: PropTypes.number,
-        text: PropTypes.string
+        text: PropTypes.string,
+        icon: PropTypes.string,
+        iconObj: PropTypes.shape({
+            className: PropTypes.string,
+            name: PropTypes.string,
+            size: PropTypes.string,
+            spin: PropTypes.bool,
+            style: PropTypes.object
+        })
     })).isRequired,
     selectable: PropTypes.bool,
     checkable: PropTypes.bool,
