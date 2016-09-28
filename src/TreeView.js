@@ -32,6 +32,7 @@ class TreeView extends Component {
         this.setState({ data: newState });
     }
     handleDoubleClick(e) {
+        e.preventDefault();
         let newState = _.clone(this.state.data);
         let node = findNodeById(newState,parseInt(e.target.dataset.id, 10));
         if(node.expanded) {
@@ -41,23 +42,29 @@ class TreeView extends Component {
         }
         this.setState({ data: newState });
         if(this.props.onExpandAll) {
-            this.props.onExpandAll({ event: e, node: node });
+            this.props.onExpandAll(e, node);
         }
     }
     handleToggleClick(e) {
+        e.preventDefault();
         let newState = _.clone(this.state.data);
         let node = findNodeById(newState,parseInt(e.target.dataset.id, 10));
         if(node.expanded) {
             collapseBranch(node);
+            if(this.props.onCollapse) {
+                this.props.onCollapse(e, node);
+            }
         } else {
             expandBranch(node);
+            if(this.props.onExpand) {
+                this.props.onExpand(e, node);
+            }
         }
         this.setState({data: newState});
-        if(this.props.onExpand) {
-            this.props.onExpand({ event: e, node: node });
-        }
+
     }
     handleSelect(e) {
+        e.preventDefault();
         let newState = _.clone(this.state.data);
         let node = findNodeById(newState,parseInt(e.target.dataset.id, 10));
         node.selected = !node.selected;
@@ -106,6 +113,7 @@ TreeView.propTypes = {
     selectable: PropTypes.bool,
     checkable: PropTypes.bool,
     onCheck: PropTypes.func,
+    onCollapse: PropTypes.func,
     draggable: PropTypes.bool,
     onDragStart: PropTypes.func,
     onDrag: PropTypes.func,

@@ -47,7 +47,7 @@ Can nodes be selected? ( Selected nodes get the className: ad-selected-node )
 
 --
 
-#### onSelect
+#### onSelect(event, nodeData)
 ###### function
 Callback executed when a node is selected
 
@@ -59,19 +59,24 @@ Can nodes be dragged?
 
 --
 
-#### onDrag, onDragStart, onDragEnd
+#### onDrag(event, nodeData), onDragStart(event, nodeData), onDragEnd(event, nodeData)
 ###### functions
 Callback functions associated with dragging a node.
 
 --
 
-#### onExpand
+#### onExpand(event, nodeData)
 ###### function
-Callback function executed when a node is expanded or collapsed.
+Callback function executed when a node is expanded.
 
 --
 
-#### onExpandAll
+#### onCollapse(event, nodeData)
+###### function
+Callback function executed when a node is collapsed.
+
+
+#### onExpandAll(event, nodeData)
 ###### function
 Callback function executed when all nodes are expanded or collapsed.
 
@@ -83,7 +88,7 @@ Adds checkboxes to each node.
 
 --
 
-#### onCheck
+#### onCheck(event, nodeData)
 ###### function
 Callback executed when a node is checked
 

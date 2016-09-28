@@ -137,8 +137,8 @@ it('collapses the branch and updates dataset properly when clicking anchor', () 
     expect(wrapper.state().data[0].expanded).toBe(false);
     expect(wrapper.state().data[0]._children).toBeDefined();
 });
-it('calls onExpand when expanding/collapsing a branch', () => {
-    let fixture = _.cloneDeep(testExpandedData);
+it('calls onExpand when expanding a branch', () => {
+    let fixture = _.cloneDeep(testData);
     const div = document.createElement('div');
     const onExpand = sinon.spy();
     const wrapper = mount(
@@ -152,4 +152,20 @@ it('calls onExpand when expanding/collapsing a branch', () => {
     let selector = wrapper.find('a.expander#1');
     selector.simulate('click',{target:{dataset:{id:1}}});
     expect(onExpand['callCount']).toBe(1);
+});
+it('calls onCollapse when collapsing a branch', () => {
+   let fixture = _.cloneDeep(testExpandedData);
+    const div = document.createElement('div');
+    const onCollapse = sinon.spy();
+    const wrapper = mount(
+        <TreeView
+            data={fixture}
+            selectable
+            onCollapse={onCollapse}
+        />,
+        div
+    );
+    let selector = wrapper.find('a.expander#1');
+    selector.simulate('click',{target:{dataset:{id:1}}});
+    expect(onCollapse['callCount']).toBe(1);
 });

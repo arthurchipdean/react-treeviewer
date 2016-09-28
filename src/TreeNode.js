@@ -86,29 +86,29 @@ class TreeNode extends Component {
     }
     onDrag(e) {
         if(this.props.onDrag) {
-            this.props.onDrag(e,this);
+            this.props.onDrag(e,this.props.data);
         }
     }
     onDragEnd(e) {
         if(this.props.onDragEnd) {
-            this.props.onDragEnd(e,this);
+            this.props.onDragEnd(e,this.props.data);
         }
     }
     onSelect(e) {
         this.props.handleSelect(e);
         if(this.props.onSelect) {
-            this.props.onSelect(e, this);
+            this.props.onSelect(e, this.props.data);
         }
     }
     onDragStart(e) {
         if(this.props.draggable && this.props.onDragStart) {
-            this.props.onDragStart(e, this);
+            this.props.onDragStart(e, this.props.data);
         }
     }
     onCheck(e) {
         this.props.handleCheck(e);
         if(this.props.onCheck) {
-            this.props.onCheck(e, this);
+            this.props.onCheck(e, this.props.data);
         }
     }
     render() {
