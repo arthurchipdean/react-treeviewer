@@ -1,5 +1,6 @@
 ##React Treeview
 #### Customizable Treeviewer built in react for visualizing hierarchical data.
+[![npm version](https://badge.fury.io/js/react-treeviewer.svg)](https://badge.fury.io/js/react-treeviewer)
 [![Build Status](https://travis-ci.org/arthurchipdean/react-treeviewer.svg?branch=master)](https://travis-ci.org/arthurchipdean/react-treeviewer)
 [![Coverage Status](https://coveralls.io/repos/github/arthurchipdean/react-treeviewer/badge.svg?branch=master)](https://coveralls.io/github/arthurchipdean/react-treeviewer?branch=master)
 ## Installing
