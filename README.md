@@ -113,7 +113,6 @@ Fontawesome icon string to represent the expanded node anchor
         }
     ]
 }]
-}
 ```
 ## Optional data properties
 Add properties to each data node for more fine grained control.
