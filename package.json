@@ -1,6 +1,21 @@
 {
   "name": "react-treeviewer",
+  "description": "Customizable Treeviewer built in react for visualizing hierarchical data.",
   "version": "0.1.0",
+  "license": "WTFPL",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arthurchipdean/react-treeviewer.git"
+  },
+  "homepage": "https://github.com/arthurchipdean/react-treeviewer",
+  "keywords": [
+    "react",
+    "tree",
+    "treeview",
+    "hierarchical",
+    "file system"
+  ],
+  "main": "index.js",
   "devDependencies": {
     "enzyme": "^2.4.1",
     "react-addons-test-utils": "^15.3.2",
@@ -16,7 +31,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom --coverage",
+    "test": "react-scripts test --env=jsdom",
+    "test-coverage": "react-scripts test --env=jsdom --coverage",
     "eject": "react-scripts eject"
   }
 }
