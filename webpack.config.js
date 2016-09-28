@@ -13,19 +13,32 @@ module.exports = {
     loaders: [
       {
         test: /.jsx?$/,
-        loader: 'babel-loader',
+        loaders: ['babel-loader?presets[]=es2015,presets[]=stage-0,presets[]=react', 'eslint-loader' ],
         exclude: /node_modules/,
-        query: {
-          presets: ['es2015', 'react', 'stage-0']
-        }
+
       },
       {
         test: /\.css$/,
         loader: "style-loader!css-loader"
       }
+    ],
+    preLoaders: [
+      {
+        test: /\.jsx?$/,
+        loaders: ['eslint'],
+        include: './src/'
+      }
     ]
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin()
-  ]
+    new webpack.optimize.UglifyJsPlugin({
+      exclude: [
+        /node_modules\//
+      ],
+      compress: {warnings: false}
+    })
+  ],
+  externals: {
+    'React': 'react'
+  }
 };

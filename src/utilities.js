@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 export const passDownProps = ({
     data,
     level,
@@ -23,6 +24,7 @@ export const domProps = ({
     handleSelect,
     ...rest
     }) => rest;
+/* eslint-enable no-unused-vars */
 export const mapTree = (root, callback) => {
     root.forEach((node) => {
         callback(node);

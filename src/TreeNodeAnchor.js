@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import _ from 'lodash';
 import {
     passDownProps,
 } from './utilities';
@@ -25,6 +24,12 @@ class TreeNodeAnchor extends Component {
 }
 TreeNodeAnchor.propTypes = {
     id: PropTypes.number,
-    expanded: PropTypes.bool
+    expanded: PropTypes.bool,
+    className: PropTypes.string,
+    selected: PropTypes.bool,
+    children: PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.string
+    ])
 };
 export default TreeNodeAnchor;

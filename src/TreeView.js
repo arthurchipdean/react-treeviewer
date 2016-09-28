@@ -67,7 +67,7 @@ class TreeView extends Component {
         const { data } = this.state;
         return (
             <ul className="tree-root">
-                {data.map((d, i) => (
+                {data.map(d => (
                     <TreeNode
                         key={d.id}
                         data={d}
@@ -110,6 +110,7 @@ TreeView.propTypes = {
     onDragStart: PropTypes.func,
     onDrag: PropTypes.func,
     onDragEnd: PropTypes.func,
+    onExpand: PropTypes.func,
     onExpandAll: PropTypes.func
 };
 export default TreeView;

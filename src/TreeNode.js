@@ -114,7 +114,8 @@ class TreeNode extends Component {
     render() {
         let {
             data,
-            level
+            level,
+            checkable
             } = this.props;
         let {
             expanded,
@@ -123,7 +124,7 @@ class TreeNode extends Component {
         let newLevel = level++;
         let hasChildren = data.children !== undefined  || data._children !== undefined;
         return (
-          <li style={{marginLeft: hasChildren ? `${level*15}px` : `${level*15+15}px`}}>
+          <li style={{marginLeft: !hasChildren && checkable ?  `${level*15+15}px` : `${level*15}px`}}>
               {hasChildren ?
                   (<div>
                       {this.getNodeExpander(
@@ -195,7 +196,12 @@ TreeNode.propTypes = {
     onDrag: PropTypes.func,
     onDragEnd: PropTypes.func,
     handleToggleClick: PropTypes.func,
-    handleDoubleClick: PropTypes.func
+    handleDoubleClick: PropTypes.func,
+    onSelect: PropTypes.func,
+    handleCheck: PropTypes.func,
+    handleSelect: PropTypes.func,
+    collapsedIcon: PropTypes.string,
+    expandedIcon: PropTypes.string
 
 };
 export default TreeNode;
