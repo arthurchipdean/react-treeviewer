@@ -3,7 +3,11 @@ var webpack = require('webpack');
 
 module.exports = {
   entry: './src/index.js',
-  output: { path: __dirname, filename: 'index.js' },
+  output: {
+    path: __dirname,
+    filename: 'index.js',
+    libraryTarget: "commonjs"
+  },
   module: {
     loaders: [
       {
@@ -16,4 +20,7 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin()
+  ]
 };
