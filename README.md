@@ -9,7 +9,9 @@
 npm install --save react-treeviewer
 ```
 The fontawesome css file is not included so include it in your webpage:
+```
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+```
 
 ##Another tree viewer?
 There are already multiple solutions out the for viewing hierarchical data but I found all existing libraries to be lacking in some manner. I wanted to be able to customize more than I could with the existing solutions.
@@ -17,10 +19,10 @@ There are already multiple solutions out the for viewing hierarchical data but I
 ##Features
 * Customize expand and collapse icons
 * Add custom icons to each node
-* Expand nodes by clicking text
-* Allows to drag nodes
+* Expand nodes by clicking text if selectable is not true.
+* Draggable nodes.
 * Double Click a node to expand or collapse all the children
-* Test suite with 90%+ coverage
+* Test suite with 100% coverage
 
 ##Coming soon
 * Lazy loading node's children

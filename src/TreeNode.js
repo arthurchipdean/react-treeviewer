@@ -122,6 +122,7 @@ class TreeNode extends Component {
             } = this.props;
         let {
             expanded,
+            id,
             text
             } = data;
         let newLevel = level++;
@@ -132,7 +133,7 @@ class TreeNode extends Component {
                   (<div>
                       {this.getNodeExpander(
                           <FontAwesome
-                              data-id={data.id}
+                              data-id={id}
                               name={expanded ? this.getExpandedIcon() : this.getCollapsedIcon()}
                           />
                       )}
