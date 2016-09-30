@@ -95,9 +95,12 @@ class TreeNode extends Component {
         }
     }
     onSelect(e) {
-        this.props.handleSelect(e);
-        if(this.props.onSelect) {
-            this.props.onSelect(e, this.props.data);
+        e.preventDefault();
+        if (this.props.selectable) {
+            this.props.handleSelect(e);
+            if (this.props.onSelect) {
+                this.props.onSelect(e, this.props.data);
+            }
         }
     }
     onDragStart(e) {
