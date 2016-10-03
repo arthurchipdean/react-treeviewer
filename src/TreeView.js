@@ -112,7 +112,8 @@ TreeView.propTypes = {
     onDrag: PropTypes.func,
     onDragEnd: PropTypes.func,
     onExpand: PropTypes.func,
-    onExpandAll: PropTypes.func
+    onExpandAll: PropTypes.func,
+    animation: PropTypes.bool
 };
 export default TreeView;
 

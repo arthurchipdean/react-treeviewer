@@ -19,3 +19,7 @@ ul.tree-branch, ul.tree-root {
   text-decoration:none;
   color: black;
 }
+.tree-branch input[type="checkbox"] {
+  margin-right: 4px;
+  vertical-align: sub;
+}

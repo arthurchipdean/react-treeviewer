@@ -115,21 +115,45 @@ class TreeNode extends Component {
             this.props.onCheck(e, this.props.data);
         }
     }
+    getChildren() {
+        let {
+            data,
+            animation,
+            level
+            } = this.props;
+        let { expanded } = data;
+
+        if(!animation && !expanded) {
+            return '';
+        }
+        return (
+            <ul className="tree-branch">
+                {data.children.map(child => (
+                    <TreeNode
+                        key={_.uniqueId()}
+                        level={level + 1}
+                        data={child}
+                        {...passDownProps(this.props)}
+                        expanded={expanded}
+                    />
+                ))}
+            </ul>
+        );
+    }
     render() {
         let {
             data,
-            level,
-            checkable
+            selectable,
+            animation
             } = this.props;
         let {
             expanded,
             id,
             text
             } = data;
-        let newLevel = level++;
-        let hasChildren = data.children !== undefined  || data._children !== undefined;
+        let hasChildren = data.children !== undefined;
         return (
-          <li style={{marginLeft: !hasChildren && checkable ?  `${level*15+15}px` : `${level*15}px`}}>
+          <li style={{marginLeft: '15px'}}>
               {hasChildren ?
                   (<div>
                       {this.getNodeExpander(
@@ -140,7 +164,7 @@ class TreeNode extends Component {
                       )}
                       {this.getCheckbox(data)}
                       {this.getIcon()}
-                      {this.props.selectable ?
+                      {selectable ?
                           this.getNodeSelector(text) :
                           this.getNodeExpander(text)
                       }
@@ -151,21 +175,12 @@ class TreeNode extends Component {
                       {this.getNodeSelector(text)}
                   </div>)
               }
-              {hasChildren &&
-              <Collapse isOpened={level === 0 || !!expanded}>
-                  <ul className="tree-branch" >
-                      {data.children.map(child => (
-                          <TreeNode
-                              key={_.uniqueId()}
-                              level={newLevel}
-                              data={child}
-                              {...passDownProps(this.props)}
-                              expanded={expanded}
-                          />
-                      ))}
-                  </ul>
+              {hasChildren && animation &&
+              <Collapse isOpened={!!expanded}>
+                  {this.getChildren()}
               </Collapse>
               }
+              {hasChildren && !animation && this.getChildren()}
           </li>
         );
     }
@@ -208,7 +223,7 @@ TreeNode.propTypes = {
     handleCheck: PropTypes.func,
     handleSelect: PropTypes.func,
     collapsedIcon: PropTypes.string,
-    expandedIcon: PropTypes.string
-
+    expandedIcon: PropTypes.string,
+    animation: PropTypes.bool
 };
 export default TreeNode;

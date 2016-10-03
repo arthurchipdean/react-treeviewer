@@ -26,7 +26,6 @@ There are already multiple solutions out the for viewing hierarchical data but I
 
 ##Coming soon
 * Lazy loading node's children
-* Animation for expanding and collapsing nodes.
 * Live Examples
 
 
@@ -42,6 +41,12 @@ render: () {
 }
 ```
 ## TreeView Properties
+
+#### Animation
+###### boolean
+Turn animations on/off when expanding or collapsing a node.
+
+--
 
 #### selectable
 ###### boolean
