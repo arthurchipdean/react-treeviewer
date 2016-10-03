@@ -1,7 +1,7 @@
 {
   "name": "react-treeviewer",
   "description": "Customizable Treeviewer built in react for visualizing hierarchical data.",
-  "version": "0.1.10-0",
+  "version": "0.1.10",
   "license": "WTFPL",
   "repository": {
     "type": "git",
