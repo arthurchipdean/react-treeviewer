@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import _ from 'lodash';
 import FontAwesome from 'react-fontawesome';
 import TreeNodeAnchor from './TreeNodeAnchor';
+import Collapse from 'react-collapse';
 import {
     passDownProps
 } from './utilities';
@@ -150,8 +151,9 @@ class TreeNode extends Component {
                       {this.getNodeSelector(text)}
                   </div>)
               }
-              {data.children !== undefined ?
-                  <ul className="tree-branch" key={_.uniqueId()}>
+              {hasChildren &&
+              <Collapse isOpened={level === 0 || !!expanded}>
+                  <ul className="tree-branch" >
                       {data.children.map(child => (
                           <TreeNode
                               key={_.uniqueId()}
@@ -162,7 +164,8 @@ class TreeNode extends Component {
                           />
                       ))}
                   </ul>
-               : null}
+              </Collapse>
+              }
           </li>
         );
     }

@@ -3,7 +3,6 @@ import TreeNode from './TreeNode';
 import _ from 'lodash';
 import {
     passDownProps,
-    mapTree,
     findNodeById,
     collapseBranch,
     collapseBranchChildren,
@@ -14,15 +13,9 @@ import {
 class TreeView extends Component {
     constructor(props) {
        super(props);
-       let data = mapTree(props.data, (d) => {
-            if(d.expanded !== true) {
-                let children = d.children;
-                d.children = undefined;
-                return d._children = children;
-            }
-        });
+
         this.state = {
-            data
+            data: props.data
         };
     }
     handleCheck(e) {

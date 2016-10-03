@@ -24,7 +24,7 @@ it('updates dataset properly when firing check events', () => {
     wrapper.find('input[type="checkbox"]').simulate('change',{target:{dataset:{id:1}}});
     expect(wrapper.state().data[0].checked).toBe(true);
     wrapper.find('input[type="checkbox"]').simulate('change',{target:{dataset:{id:3}}});
-    expect(wrapper.state().data[0]._children[0].checked).toBe(true);
+    expect(wrapper.state().data[0].children[0].checked).toBe(true);
 });
 it('calls onCheck event handler', () => {
     let fixture = _.cloneDeep(testData);
@@ -89,8 +89,7 @@ it('collapses all branches on doubleclick', () => {
     let selector = wrapper.find('a.expander#1');
     selector.simulate('doubleclick',{target:{dataset:{id:1}}});
     expect(wrapper.state().data[0].expanded).toBe(false);
-    expect(wrapper.state().data[0]._children).toBeDefined();
-    expect(wrapper.state().data[0]._children[0].expanded).toBe(false);
+    expect(wrapper.state().data[0].children[0].expanded).toBe(false);
 });
 it('calls onExpandAll on doubleclick', () => {
     let fixture = _.cloneDeep(testExpandedData);
@@ -135,7 +134,6 @@ it('collapses the branch and updates dataset properly when clicking anchor', () 
     let selector = wrapper.find('a.expander#1');
     selector.simulate('click',{target:{dataset:{id:1}}});
     expect(wrapper.state().data[0].expanded).toBe(false);
-    expect(wrapper.state().data[0]._children).toBeDefined();
 });
 it('calls onExpand when expanding a branch', () => {
     let fixture = _.cloneDeep(testData);
