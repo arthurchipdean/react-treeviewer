@@ -42,7 +42,7 @@ render: () {
 ```
 ## TreeView Properties
 
-#### Animation
+#### animation
 ###### boolean
 Turn animations on/off when expanding or collapsing a node.
 
