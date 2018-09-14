@@ -43,12 +43,12 @@
   },
   "dependencies": {
     "lodash": "^4.16.1",
-    "react": "^15.3.2",
-    "react-collapse": "^2.3.3",
-    "react-dom": "^15.3.2",
+    "prop-types": "^15.6.2",
+    "react": "^16.5.1",
+    "react-collapse": "^4.0.3",
     "react-fontawesome": "^1.2.0",
-    "react-height": "^2.1.1",
-    "react-motion": "^0.4.5"
+    "react-height": "^3.0.0",
+    "react-motion": "^0.5.2"
   },
   "scripts": {
     "start": "webpack --watch",
