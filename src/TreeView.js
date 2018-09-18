@@ -39,7 +39,6 @@ class TreeView extends Component {
     e.preventDefault()
     let newState = _.clone(this.state.data)
     let node = findNodeById(newState, parseInt(e.target.dataset.id, 10))
-    console.log('node', node)
     if (node.expanded) {
       collapseBranch(node)
       if (this.props.onCollapse) {

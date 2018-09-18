@@ -27,7 +27,6 @@ class TreeNode extends Component {
 
   getNodeExpander(child) {
     let { data, handleToggleClick, handleDoubleClick } = this.props
-    console.log(this.props)
     return (
       <TreeNodeAnchor
         id={data.id}
