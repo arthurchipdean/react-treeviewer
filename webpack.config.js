@@ -1,5 +1,5 @@
-var path = require('path');
-var webpack = require('webpack');
+var path = require('path')
+var webpack = require('webpack')
 
 module.exports = {
   entry: './src/index.js',
@@ -7,38 +7,35 @@ module.exports = {
     path: __dirname,
     filename: 'index.js',
     libraryTarget: 'umd',
-    library: 'TreeView'
+    library: 'TreeView',
   },
   module: {
     loaders: [
       {
         test: /.jsx?$/,
-        loaders: ['babel-loader?presets[]=es2015,presets[]=stage-0,presets[]=react', 'eslint-loader' ],
+        loaders: ['babel-loader?presets[]=es2015,presets[]=stage-0,presets[]=react', 'eslint-loader'],
         exclude: /node_modules/,
-
       },
       {
         test: /\.css$/,
-        loader: "style-loader!css-loader"
-      }
+        loader: 'style-loader!css-loader',
+      },
     ],
     preLoaders: [
       {
         test: /\.jsx?$/,
         loaders: ['eslint'],
-        include: './src/'
-      }
-    ]
+        include: './src/',
+      },
+    ],
   },
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
-      exclude: [
-        /node_modules\//
-      ],
-      compress: {warnings: false}
-    })
+      exclude: [/node_modules\//],
+      compress: { warnings: false },
+    }),
   ],
   externals: {
-    'React': 'react'
-  }
-};
+    React: 'react',
+  },
+}
