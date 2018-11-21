@@ -18,6 +18,11 @@
     "react"
   ],
   "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "16.5.1"
+    },
+    "propWrapperFunctions": [ "forbidExtraProps" ],
     "ecmascript": 7,
     "jsx": true
   },
