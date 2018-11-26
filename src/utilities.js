@@ -20,6 +20,7 @@ export const domProps = ({
     onDrag,
     onDragEnd,
     checkable,
+    checkableLevel,
     onCheck,
     handleSelect,
     ...rest
