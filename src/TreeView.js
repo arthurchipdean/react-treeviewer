@@ -10,7 +10,7 @@ import {
   expandBranchChildren
 } from './utilities';
 import CheckElement from './components/CheckElement';
-import TextElement from './components/TextElement';
+import LinkElement from './components/LinkElement';
 
 
 class TreeView extends Component {
@@ -22,29 +22,29 @@ class TreeView extends Component {
   }
 
   handleCheck = (e) => {
-    let newState = Object.assign({}, this.state.data);
-    let node = findNodeById(newState, parseInt(e.target.dataset.id, 10));
+    const data = this.state.data.slice(0);
+    const node = findNodeById(data, parseInt(e.target.dataset.id, 10));
     node.checked = !node.checked;
-    this.setState({data: newState});
+    this.setState({data});
   };
   handleDoubleClick = (e) => {
     e.preventDefault();
-    let newState = Object.assign({}, this.state.data);
-    let node = findNodeById(newState, parseInt(e.target.dataset.id, 10));
+    const data = this.state.data.slice(0);
+    const node = findNodeById(data, parseInt(e.target.dataset.id, 10));
     if (node.expanded) {
       collapseBranchChildren(node);
     } else {
       expandBranchChildren(node);
     }
-    this.setState({data: newState});
+    this.setState({data});
     if (this.props.onExpandAll) {
       this.props.onExpandAll(e, node);
     }
   };
   handleToggleClick = (e) => {
     e.preventDefault();
-    let data = Object.assign({}, this.state.data);
-    let node = findNodeById(data, parseInt(e.target.dataset.id, 10));
+    const data = this.state.data.slice(0);
+    const node = findNodeById(data, parseInt(e.target.dataset.id, 10));
     if (node.expanded) {
       collapseBranch(node);
       if (this.props.onCollapse) {
@@ -56,15 +56,15 @@ class TreeView extends Component {
         this.props.onExpand(e, node);
       }
     }
-    this.setState({data: data});
+    this.setState({data});
 
   };
   handleSelect = (e) => {
     e.preventDefault();
-    let newState = Object.assign({}, this.state.data);
-    let node = findNodeById(newState, parseInt(e.target.dataset.id, 10));
+    const data = this.state.data.slice(0);
+    const node = findNodeById(data, parseInt(e.target.dataset.id, 10));
     node.selected = !node.selected;
-    this.setState({data: newState});
+    this.setState({data});
   };
 
   render() {
@@ -79,10 +79,10 @@ class TreeView extends Component {
             handleToggleClick={this.handleToggleClick}
             handleDoubleClick={this.handleDoubleClick}
             handleCheck={this.handleCheck}
-            checkElement={this.props.checkElement || CheckElement}
-            textElement={this.props.textElement || TextElement}
+            CheckElement={this.props.CheckElement || CheckElement}
+            LinkElement={this.props.LinkElement || LinkElement}
             level={0}
-            data-expanded={d.expanded}
+            expanded={d.expanded}
             {...passDownProps(this.props)}
           />
         ))}
@@ -111,7 +111,6 @@ TreeView.propTypes = {
   })).isRequired,
   selectable: PropTypes.bool,
   checkable: PropTypes.bool,
-  checkableLevel: PropTypes.number,
   onCheck: PropTypes.func,
   onCollapse: PropTypes.func,
   draggable: PropTypes.bool,
@@ -122,6 +121,6 @@ TreeView.propTypes = {
   onExpandAll: PropTypes.func,
   animation: PropTypes.bool,
   CheckElement: PropTypes.element,
-  TextElement: PropTypes.element
+  LinkElement: PropTypes.element
 };
 export default TreeView;
